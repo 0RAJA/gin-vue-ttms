@@ -1,0 +1,2935 @@
+basePath: /ttms
+definitions:
+  common.State:
+    properties:
+      data:
+        description: 失败时返回空
+      status_code:
+        description: 状态码，0-成功，其他值-失败
+        type: integer
+      status_msg:
+        description: 返回状态描述
+        type: string
+    type: object
+  db.GetCinemasRow:
+    properties:
+      avatar:
+        type: string
+      cols:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      rows:
+        type: integer
+      total:
+        type: integer
+    type: object
+  db.GetCommentsByUserIDRow:
+    properties:
+      commentid:
+        type: integer
+      content:
+        type: string
+      created_at:
+        type: string
+      ip_address:
+        type: string
+      movie_id:
+        type: integer
+      movieavatar:
+        type: string
+      moviename:
+        type: string
+      score:
+        type: number
+      star_num:
+        type: integer
+      total:
+        type: integer
+    type: object
+  db.GetMoviesByIDsRow:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      alias_name:
+        type: string
+      avatar:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      period:
+        type: string
+      score:
+        type: number
+    type: object
+  db.GetMoviesByNameOrContentRow:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      alias_name:
+        type: string
+      avatar:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      period:
+        type: string
+      score:
+        type: number
+      total:
+        type: integer
+    type: object
+  db.GetMoviesOrderByBoxOfficeRow:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      alias_name:
+        type: string
+      avatar:
+        type: string
+      box_office:
+        type: number
+      id:
+        type: integer
+      name:
+        type: string
+      period:
+        type: string
+      score:
+        type: number
+    type: object
+  db.GetMoviesOrderByUserMovieCountRow:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      alias_name:
+        type: string
+      avatar:
+        type: string
+      fallow_count:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      period:
+        type: string
+      score:
+        type: number
+    type: object
+  db.GetMoviesOrderByVisitCountRow:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      alias_name:
+        type: string
+      avatar:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      period:
+        type: string
+      score:
+        type: number
+      total:
+        type: integer
+    type: object
+  db.GetPlansByMovieAndStartTimeOrderByPriceRow:
+    properties:
+      cinema_id:
+        type: integer
+      cinemaname:
+        type: string
+      end_at:
+        type: string
+      id:
+        type: integer
+      movie_id:
+        type: integer
+      price:
+        type: number
+      start_at:
+        type: string
+      total:
+        type: integer
+      version:
+        type: string
+    type: object
+  db.GetPlansRow:
+    properties:
+      cinema_id:
+        type: integer
+      cinemaname:
+        type: string
+      end_at:
+        type: string
+      id:
+        type: integer
+      movie_id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: number
+      start_at:
+        type: string
+      total:
+        type: integer
+      version:
+        type: string
+    type: object
+  db.GetSeatsByCinemasRow:
+    properties:
+      cinema_id:
+        type: integer
+      col:
+        type: integer
+      id:
+        type: integer
+      row:
+        type: integer
+      status:
+        type: string
+    type: object
+  db.ListUserInfoRow:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      privilege:
+        type: string
+      username:
+        type: string
+    type: object
+  db.SearchAllOrderRow:
+    properties:
+      cinema_name:
+        type: string
+      create_at:
+        type: string
+      movie_avatar:
+        type: string
+      movie_name:
+        type: string
+      order_id:
+        type: string
+      plan_id:
+        type: integer
+      price:
+        type: number
+      seats:
+        type: string
+      seats_id:
+        type: string
+      status:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  db.SearchOrderByConditionRow:
+    properties:
+      cinema_name:
+        type: string
+      create_at:
+        type: string
+      movie_avatar:
+        type: string
+      movie_name:
+        type: string
+      order_id:
+        type: string
+      plan_id:
+        type: integer
+      price:
+        type: number
+      seats:
+        type: string
+      seats_id:
+        type: string
+      status:
+        type: string
+      total:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  reply.CheckCinemaByName:
+    properties:
+      exist:
+        type: boolean
+    type: object
+  reply.CheckTicket:
+    properties:
+      is_locked:
+        type: boolean
+      order_id:
+        type: string
+      pay_url:
+        type: string
+    type: object
+  reply.Comment:
+    properties:
+      avatar:
+        type: string
+      commentid:
+        type: integer
+      content:
+        type: string
+      created_at:
+        type: string
+      ip_address:
+        type: string
+      is_star:
+        type: boolean
+      score:
+        type: number
+      star_num:
+        type: integer
+      total:
+        type: integer
+      userid:
+        type: integer
+      username:
+        type: string
+    type: object
+  reply.CreateComment:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      ip_address:
+        type: string
+      movie_id:
+        type: integer
+      score:
+        type: number
+      user_id:
+        type: integer
+    type: object
+  reply.GetAreas:
+    properties:
+      list:
+        items:
+          type: string
+        type: array
+    type: object
+  reply.GetByPlan:
+    properties:
+      tickets:
+        items:
+          items:
+            $ref: '#/definitions/reply.Ticket'
+          type: array
+        type: array
+    type: object
+  reply.GetCinemaByID:
+    properties:
+      avatar:
+        type: string
+      cols:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      rows:
+        type: integer
+    type: object
+  reply.GetCinemas:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/db.GetCinemasRow'
+        type: array
+    type: object
+  reply.GetCommentsByMovieID:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/reply.Comment'
+        type: array
+    type: object
+  reply.GetCommentsByUserID:
+    properties:
+      List:
+        items:
+          $ref: '#/definitions/db.GetCommentsByUserIDRow'
+        type: array
+    type: object
+  reply.GetMovieByID:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      alias_name:
+        type: string
+      area:
+        type: string
+      avatar:
+        type: string
+      box_office:
+        type: number
+      comment_count:
+        type: integer
+      content:
+        type: string
+      director:
+        type: string
+      duration:
+        type: integer
+      follow_count:
+        type: integer
+      id:
+        type: integer
+      isComment:
+        type: boolean
+      isFollow:
+        type: boolean
+      name:
+        type: string
+      period:
+        type: string
+      score:
+        type: number
+      tags:
+        items:
+          type: string
+        type: array
+      visit_count:
+        type: integer
+    type: object
+  reply.GetMovies:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/reply.GetMoviesWithTags'
+        type: array
+    type: object
+  reply.GetMoviesByNameOrContent:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/db.GetMoviesByNameOrContentRow'
+        type: array
+    type: object
+  reply.GetMoviesByTagPeriodArea:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/reply.GetMoviesByTagPeriodAreaRow'
+        type: array
+    type: object
+  reply.GetMoviesByTagPeriodAreaRow:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      alias_name:
+        type: string
+      avatar:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      period:
+        type: string
+      score:
+        type: number
+      total:
+        type: integer
+    type: object
+  reply.GetMoviesOrderByBoxOffice:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/db.GetMoviesOrderByBoxOfficeRow'
+        type: array
+    type: object
+  reply.GetMoviesOrderByRecentVisitNum:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/db.GetMoviesByIDsRow'
+        type: array
+    type: object
+  reply.GetMoviesOrderByUserMovieCount:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/db.GetMoviesOrderByUserMovieCountRow'
+        type: array
+    type: object
+  reply.GetMoviesOrderByVisitCount:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/db.GetMoviesOrderByVisitCountRow'
+        type: array
+    type: object
+  reply.GetMoviesWithTags:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      alias_name:
+        type: string
+      area:
+        type: string
+      avatar:
+        type: string
+      content:
+        type: string
+      director:
+        type: string
+      duration:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      period:
+        type: string
+      tags:
+        items:
+          type: string
+        type: array
+      total:
+        type: integer
+    type: object
+  reply.GetOrderByUserID:
+    properties:
+      orders:
+        items:
+          $ref: '#/definitions/reply.Order'
+        type: array
+    type: object
+  reply.GetPlans:
+    properties:
+      List:
+        items:
+          $ref: '#/definitions/db.GetPlansRow'
+        type: array
+    type: object
+  reply.GetPlansByMovieIDAndStartTimeOrderByPrice:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/db.GetPlansByMovieAndStartTimeOrderByPriceRow'
+        type: array
+    type: object
+  reply.GetSeatsByCinema:
+    properties:
+      seats_map:
+        items:
+          items:
+            $ref: '#/definitions/db.GetSeatsByCinemasRow'
+          type: array
+        type: array
+    type: object
+  reply.GetTags:
+    properties:
+      tags_names:
+        items:
+          type: string
+        type: array
+    type: object
+  reply.GetTagsInMovie:
+    properties:
+      tag_names:
+        items:
+          type: string
+        type: array
+    type: object
+  reply.GetUserInfo:
+    properties:
+      user:
+        $ref: '#/definitions/reply.User'
+    type: object
+  reply.GetUsers:
+    properties:
+      users:
+        items:
+          $ref: '#/definitions/reply.User'
+        type: array
+    type: object
+  reply.GetVisitCountsByCreateDate:
+    properties:
+      nums:
+        type: integer
+    type: object
+  reply.ListUserInfo:
+    properties:
+      user_infos:
+        items:
+          $ref: '#/definitions/db.ListUserInfoRow'
+        type: array
+      user_num:
+        type: integer
+    type: object
+  reply.Login:
+    properties:
+      access_token:
+        type: string
+      avatar:
+        type: string
+      pal_load:
+        $ref: '#/definitions/token.Payload'
+      privilege:
+        type: string
+      refresh_token:
+        type: string
+      user_id:
+        type: integer
+      username:
+        type: string
+    type: object
+  reply.Order:
+    properties:
+      cinema_name:
+        type: string
+      create_at:
+        type: string
+      movie_avatar:
+        type: string
+      movie_name:
+        type: string
+      order_id:
+        type: string
+      plan_id:
+        type: integer
+      price:
+        type: number
+      seats:
+        items:
+          type: string
+        type: array
+      seats_id:
+        items:
+          type: integer
+        type: array
+      status:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  reply.RefreshParams:
+    properties:
+      new_access_token:
+        type: string
+    type: object
+  reply.Register:
+    properties:
+      access_token:
+        type: string
+      pal_load:
+        $ref: '#/definitions/token.Payload'
+      privilege:
+        type: string
+      refresh_token:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  reply.SearchOrderByCondition:
+    properties:
+      orders:
+        items:
+          $ref: '#/definitions/db.SearchOrderByConditionRow'
+        type: array
+    type: object
+  reply.SearchOrderList:
+    properties:
+      orders:
+        items:
+          $ref: '#/definitions/db.SearchAllOrderRow'
+        type: array
+      total:
+        type: integer
+    type: object
+  reply.Ticket:
+    properties:
+      plan_id:
+        minimum: 1
+        type: integer
+      price:
+        type: number
+      seat_id:
+        minimum: 1
+        type: integer
+      seats_status:
+        type: string
+      status:
+        type: string
+    required:
+    - plan_id
+    - price
+    - seat_id
+    - seats_status
+    - status
+    type: object
+  reply.User:
+    properties:
+      avatar:
+        type: string
+      birthday:
+        type: string
+      email:
+        type: string
+      gender:
+        type: string
+      hobby:
+        items:
+          type: string
+        type: array
+      id:
+        type: integer
+      lifestate:
+        type: string
+      privilege:
+        type: string
+      signature:
+        type: string
+      username:
+        type: string
+    type: object
+  request.CheckTicket:
+    properties:
+      plan_id:
+        minimum: 1
+        type: integer
+      seats_id:
+        items:
+          type: integer
+        minItems: 1
+        type: array
+      user_id:
+        minimum: 1
+        type: integer
+    required:
+    - plan_id
+    - seats_id
+    - user_id
+    type: object
+  request.CommentStar:
+    properties:
+      comment_id:
+        minimum: 1
+        type: integer
+      opt:
+        description: true 点赞 false 取消用户对评论的点赞
+        type: boolean
+    required:
+    - comment_id
+    - opt
+    type: object
+  request.CreateCinema:
+    properties:
+      avatar:
+        description: 封面链接
+        type: string
+      cols:
+        description: 列数
+        maximum: 20
+        minimum: 1
+        type: integer
+      name:
+        description: 影厅名
+        maxLength: 32
+        minLength: 1
+        type: string
+      rows:
+        description: 行数
+        maximum: 10
+        minimum: 1
+        type: integer
+    required:
+    - cols
+    - name
+    - rows
+    type: object
+  request.CreateComment:
+    properties:
+      content:
+        description: 评论内容
+        minLength: 1
+        type: string
+      movie_id:
+        description: 电影ID
+        minimum: 1
+        type: integer
+      score:
+        description: 评分
+        maximum: 10
+        minimum: 0
+        type: number
+    required:
+    - content
+    - movie_id
+    type: object
+  request.CreateMovie:
+    properties:
+      actors:
+        description: 演员列表
+        items:
+          maxLength: 5
+          type: string
+        minItems: 1
+        type: array
+      alias_name:
+        description: 别名
+        minLength: 1
+        type: string
+      area:
+        maxLength: 20
+        minLength: 1
+        type: string
+      avatar:
+        description: 图像
+        type: string
+      content:
+        description: 简介
+        maxLength: 1000
+        minLength: 1
+        type: string
+      director:
+        description: 导演
+        minLength: 1
+        type: string
+      duration:
+        description: 时长(分钟)
+        minimum: 1
+        type: integer
+      name:
+        minLength: 1
+        type: string
+      period:
+        description: 上映时间 秒时间戳
+        minimum: 0
+        type: integer
+      tags:
+        description: 标签，不能有重复的
+        items:
+          maxLength: 5
+          type: string
+        minItems: 1
+        type: array
+    required:
+    - actors
+    - alias_name
+    - area
+    - content
+    - director
+    - duration
+    - name
+    - period
+    - tags
+    type: object
+  request.CreatePlan:
+    properties:
+      cinema_id:
+        minimum: 1
+        type: integer
+      movie_id:
+        minimum: 1
+        type: integer
+      price:
+        minimum: 1
+        type: number
+      start_at:
+        minimum: 0
+        type: integer
+      version:
+        maxLength: 15
+        minLength: 1
+        type: string
+    required:
+    - cinema_id
+    - movie_id
+    - price
+    - start_at
+    - version
+    type: object
+  request.DeleteCinema:
+    properties:
+      cinema_id:
+        description: 影厅ID
+        minimum: 1
+        type: integer
+    required:
+    - cinema_id
+    type: object
+  request.DeleteComment:
+    properties:
+      comment_id:
+        minimum: 1
+        type: integer
+    required:
+    - comment_id
+    type: object
+  request.DeleteMovieByID:
+    properties:
+      movie_id:
+        minimum: 1
+        type: integer
+    required:
+    - movie_id
+    type: object
+  request.DeleteOneByMovieAndTag:
+    properties:
+      MovieId:
+        minimum: 1
+        type: integer
+      TagNames:
+        items:
+          type: string
+        minItems: 1
+        type: array
+    required:
+    - MovieId
+    - TagNames
+    type: object
+  request.DeletePlan:
+    properties:
+      planID:
+        minimum: 1
+        type: integer
+    required:
+    - planID
+    type: object
+  request.DeleteUser:
+    properties:
+      UserId:
+        minimum: 1
+        type: integer
+    required:
+    - UserId
+    type: object
+  request.GetByPlan:
+    properties:
+      PlanId:
+        minimum: 1
+        type: integer
+    required:
+    - PlanId
+    type: object
+  request.Login:
+    properties:
+      Password:
+        minLength: 1
+        type: string
+      Username:
+        minLength: 1
+        type: string
+    required:
+    - Password
+    - Username
+    type: object
+  request.ModifyPassword:
+    properties:
+      Email:
+        type: string
+      NewPassword:
+        minLength: 1
+        type: string
+      VerifyCode:
+        minLength: 1
+        type: string
+    required:
+    - Email
+    - NewPassword
+    - VerifyCode
+    type: object
+  request.PayTicket:
+    properties:
+      order_id:
+        type: string
+      plan_id:
+        minimum: 1
+        type: integer
+      seats_id:
+        items:
+          type: integer
+        minItems: 1
+        type: array
+      user_id:
+        minimum: 1
+        type: integer
+    required:
+    - order_id
+    - plan_id
+    - seats_id
+    - user_id
+    type: object
+  request.Register:
+    properties:
+      Email:
+        type: string
+      InviteCode:
+        type: string
+      Password:
+        minLength: 1
+        type: string
+      Username:
+        minLength: 1
+        type: string
+      VerifyCode:
+        minLength: 1
+        type: string
+    required:
+    - Email
+    - Password
+    - Username
+    - VerifyCode
+    type: object
+  request.SendEmailCode:
+    properties:
+      email:
+        type: string
+    type: object
+  request.UpdateCinema:
+    properties:
+      cinema_id:
+        minimum: 1
+        type: integer
+      new_avatar:
+        description: 不填表示不更新此值
+        type: string
+      new_name:
+        description: 不填表示不更新此值
+        type: string
+    required:
+    - cinema_id
+    type: object
+  request.UpdateMovie:
+    properties:
+      actors:
+        description: 演员列表
+        items:
+          maxLength: 5
+          type: string
+        minItems: 1
+        type: array
+      alias_name:
+        description: 别名
+        minLength: 1
+        type: string
+      area:
+        type: string
+      avatar:
+        type: string
+      content:
+        minLength: 1
+        type: string
+      director:
+        minLength: 1
+        type: string
+      id:
+        description: 电影ID
+        type: integer
+      name:
+        minLength: 1
+        type: string
+      period:
+        description: 上映时间
+        type: integer
+    required:
+    - actors
+    - alias_name
+    - area
+    - content
+    - director
+    - id
+    - name
+    - period
+    type: object
+  request.UpdateSeatsById:
+    properties:
+      CinemaID:
+        minimum: 1
+        type: integer
+      Status:
+        type: string
+    required:
+    - CinemaID
+    - Status
+    type: object
+  request.UpdateUserAvatar:
+    properties:
+      NewAvatar:
+        type: string
+      UserId:
+        minimum: 1
+        type: integer
+    required:
+    - NewAvatar
+    - UserId
+    type: object
+  request.UpdateUserInfo:
+    properties:
+      Birthday:
+        minimum: 1
+        type: integer
+      Email:
+        type: string
+      Gender:
+        type: string
+      Hobbys:
+        items:
+          type: string
+        type: array
+      LifeState:
+        type: string
+      Signature:
+        minLength: 1
+        type: string
+      UserId:
+        minimum: 1
+        type: integer
+      Username:
+        minLength: 1
+        type: string
+    required:
+    - Birthday
+    - Email
+    - Gender
+    - Hobbys
+    - LifeState
+    - Signature
+    - UserId
+    - Username
+    type: object
+  request.UserMovieAction:
+    properties:
+      movie_id:
+        minimum: 1
+        type: integer
+      opt:
+        type: boolean
+    required:
+    - movie_id
+    - opt
+    type: object
+  token.Payload:
+    properties:
+      expired-at:
+        type: string
+      id:
+        description: 用于管理每个JWT
+        type: string
+      issued-at:
+        description: 创建时间用于检验
+        type: string
+      user_id:
+        type: integer
+      user_name:
+        type: string
+    type: object
+host: ttms.humraja.xyz
+info:
+  contact: {}
+  description: ttms影院管理系统
+  license:
+    name: raja,moonman
+  title: ttms
+  version: "1.0"
+paths:
+  /cinema/check_name:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 影厅名
+        in: query
+        maxLength: 32
+        minLength: 1
+        name: cinema_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.CheckCinemaByName'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 检查影厅名是否已经存在
+      tags:
+      - cinema
+  /cinema/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: '影厅: 名字，图片，行数，列数'
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateCinema'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 创建影厅
+      tags:
+      - cinema
+  /cinema/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 影厅id
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.DeleteCinema'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 删除影厅(不能删除存在演出计划的影厅)
+      tags:
+      - cinema
+  /cinema/get:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 影厅ID
+        in: query
+        minimum: 1
+        name: cinema_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetCinemaByID'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 获取影厅详细信息
+      tags:
+      - cinema
+  /cinema/list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetCinemas'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 分页获取所有影厅
+      tags:
+      - cinema
+  /cinema/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 是否存在
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateCinema'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 更新影厅名和图片链接
+      tags:
+      - cinema
+  /comment/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 评论信息
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateComment'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.CreateComment'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 创建评论
+      tags:
+      - comment
+  /comment/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 评论ID
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.DeleteComment'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 删除评论
+      tags:
+      - comment
+  /comment/list/movie_id:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - in: query
+        minimum: 1
+        name: movie_id
+        required: true
+        type: integer
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetCommentsByMovieID'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 通过电影ID分页获取所有相关评论(必须登陆)
+      tags:
+      - comment
+  /comment/list/user_id:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetCommentsByUserID'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 获取当前用户所有评论
+      tags:
+      - comment
+  /comment/star:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 评论ID 操作选项
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.CommentStar'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 给评论点赞获取取消点赞
+      tags:
+      - comment
+  /count/visit:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - in: query
+        minimum: 1
+        name: end_time
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: start_time
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetVisitCountsByCreateDate'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 获取时间内的获取电影信息的点击量
+      tags:
+      - count
+  /email/send:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 邮箱
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.SendEmailCode'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 发送验证码
+      tags:
+      - email
+  /movie/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 电影信息
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateMovie'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 创建电影
+      tags:
+      - movie
+  /movie/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 电影ID
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.DeleteMovieByID'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 删除电影(不能删除存在演出计划的电影)
+      tags:
+      - movie
+  /movie/get:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - in: query
+        minimum: 1
+        name: movie_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetMovieByID'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 获取电影详细信息
+      tags:
+      - movie
+  /movie/list/areas:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetAreas'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 获得所有存在的地区
+      tags:
+      - movie
+  /movie/list/box_office:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        maximum: 5
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetMoviesOrderByBoxOffice'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 根据票房获取固定数量的电影列表(非实时)
+      tags:
+      - movie
+  /movie/list/info:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetMovies'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 分页获取电影的创建时信息
+      tags:
+      - movie
+  /movie/list/key:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 关键字
+        in: query
+        maxLength: 20
+        minLength: 1
+        name: key
+        required: true
+        type: string
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetMoviesByNameOrContent'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 通过关键字对电影名,别名以及分页进行模糊查询返回匹配电影的简要信息
+      tags:
+      - movie
+  /movie/list/recent_visit_count:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetMoviesOrderByRecentVisitNum'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 根据近期访问量获取电影列表
+      tags:
+      - movie
+  /movie/list/tag_period_area:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        name: area
+        type: string
+      - in: query
+        name: end_time
+        type: integer
+      - enum:
+        - period
+        - visit_count
+        - score
+        in: query
+        name: order_by
+        required: true
+        type: string
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      - in: query
+        name: start_time
+        type: integer
+      - in: query
+        name: tag_name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetMoviesByTagPeriodArea'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 分页查询经过对标签上映时间地区进行筛选并按照指定数据排序的电影
+      tags:
+      - movie
+  /movie/list/user_movie_count:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        maximum: 5
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetMoviesOrderByUserMovieCount'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 根据电影期待数获取固定数量的电影列表(非实时)
+      tags:
+      - movie
+  /movie/list/visit_count:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetMoviesOrderByVisitCount'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 根据访问量获取电影列表
+      tags:
+      - movie
+  /movie/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 更新的电影信息
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateMovie'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 更新电影信息(时长不可更改)
+      tags:
+      - movie
+  /order/list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - in: query
+        name: user_id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetOrderByUserID'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 根据用户id查询订单
+      tags:
+      - order
+  /order/listAll:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.SearchOrderList'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 展示所有订单
+      tags:
+      - order
+  /order/listCondition:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - in: query
+        name: condition
+        type: string
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.SearchOrderByCondition'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 根据条件搜索订单
+      tags:
+      - order
+  /plan/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 电影ID，影厅ID，开始时间，结束时间，票价
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreatePlan'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 创建演出计划
+      tags:
+      - plan
+  /plan/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 演出计划ID
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.DeletePlan'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 删除演出计划(不能删除已经有锁定或者已售的票的演出计划)
+      tags:
+      - plan
+  /plan/list/info:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetPlans'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 分页获取所有演出计划
+      tags:
+      - plan
+  /plan/list/movie_id:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        minimum: 0
+        name: end_time
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: movie_id
+        required: true
+        type: integer
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      - in: query
+        minimum: 0
+        name: start_time
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetPlansByMovieIDAndStartTimeOrderByPrice'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 通过电影ID和查询相关时间区间内的演出计划
+      tags:
+      - plan
+  /seats/list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        minimum: 1
+        name: CinemaID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetSeatsByCinema'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 通过影厅Id得到相关座位表
+      tags:
+      - seats
+  /seats/update:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 影厅id,状态
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateSeatsById'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 通过id更新座位
+      tags:
+      - seats
+  /tags/addTags:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 电影Id，要添加的标签名数组
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.DeleteOneByMovieAndTag'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 为电影添加标签
+      tags:
+      - tags
+  /tags/delete:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 电影Id，标签名
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.DeleteOneByMovieAndTag'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 删除电影的指定标签
+      tags:
+      - tags
+  /tags/list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        minimum: 1
+        name: MovieId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetTagsInMovie'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 得到电影相关的所有标签
+      tags:
+      - tags
+  /tags/list/tags:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetTags'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 得到所有标签
+      tags:
+      - tags
+  /ticket/check:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户id,演出计划id,座位ids
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.CheckTicket'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.CheckTicket'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 用来检查票是否能够被锁定
+      tags:
+      - tickets
+  /ticket/list:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 演出计划Id
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.GetByPlan'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetByPlan'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 根据演出计划id得到相关的票信息
+      tags:
+      - tickets
+  /ticket/listAll:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 得到所有票
+      tags:
+      - tickets
+  /ticket/pay:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户id,演出计划id,座位id,订单id
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.PayTicket'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 进行支付操作
+      tags:
+      - tickets
+  /ticket/payUrl:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BasicAuth: []
+      summary: 展示二维码接口
+      tags:
+      - tickets
+  /ticket/qrresult:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 得到二维码扫描结果
+      tags:
+      - tickets
+  /ticket/search:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      - in: query
+        minimum: 1
+        name: plan_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 根据planID搜索票
+      tags:
+      - tickets
+  /upload/file:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 文件
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 上传文件
+      tags:
+      - upload
+  /user/delete:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户id
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.DeleteUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 根据id删除用户
+      tags:
+      - user
+  /user/generate:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        name: givedRight
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 生成邀请码
+      tags:
+      - user
+  /user/get:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        minimum: 1
+        name: UserId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetUserInfo'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 获取用户信息
+      tags:
+      - user
+  /user/info/modify:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户id,用户名，邮箱，生日，性别，爱好，生活状态，个性签名
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateUserInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 更新用户信息
+      tags:
+      - user
+  /user/isRepeat:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        minLength: 1
+        name: Username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 验证用户输入的用户名是否存在
+      tags:
+      - user
+  /user/list:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.GetUsers'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 获取所有用户
+      tags:
+      - user
+  /user/listInfo:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.ListUserInfo'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 展示所有用户
+      tags:
+      - user
+  /user/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户名，密码
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.Login'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.Login'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 用户登录
+      tags:
+      - user
+  /user/modifyPwd:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 密码，邮箱
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.ModifyPassword'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 更改用户密码
+      tags:
+      - user
+  /user/refresh:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        minLength: 1
+        name: access_token
+        required: true
+        type: string
+      - in: query
+        minLength: 1
+        name: refresh_token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.RefreshParams'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 刷新token
+      tags:
+      - user
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户名，密码，邮箱,邀请码
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.Register'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.Register'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 用户注册
+      tags:
+      - user
+  /user/search:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        minLength: 1
+        name: Username
+        required: true
+        type: string
+      - default: 1
+        description: 第几页
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: 每页大小
+        in: query
+        maximum: 10
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.State'
+            - properties:
+                data:
+                  $ref: '#/definitions/reply.ListUserInfo'
+              type: object
+      security:
+      - BasicAuth: []
+      summary: 搜索用户
+      tags:
+      - user
+  /user/updateAvatar:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户id，新头像url
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateUserAvatar'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 更新用户头像
+      tags:
+      - user
+  /user_movie/opt:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 电影名 是否喜欢
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserMovieAction'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.State'
+      security:
+      - BasicAuth: []
+      summary: 用户对电影的期望进行操作
+      tags:
+      - user_movie
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"

@@ -1,0 +1,42 @@
+version: "3.8"
+volumes:
+  ttms_postgres_zr_data:
+  ttms_redis_data:
+services:
+  postgres:
+    image: chenxinaz/zhparser
+    container_name: postgres_zr
+    privileged: true
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    ports:
+      - "5432:5432"
+    environment:
+      ALLOW_IP_RANGE: 0.0.0.0/0
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: ttms
+    volumes:
+      - ttms_postgres_zr_data:/var/lib/postgresql/data # 数据库
+      - /home/raja/workspace/go/src/ttms/config/postgres/my_postgres.conf:/etc/postgresql/postgresql.conf # 配置文件
+
+  redis:
+    image: redis:6.2
+    container_name: redis_62
+    privileged: true # 权限
+    ports:
+      - "7963:7963"
+    volumes:
+      - /home/raja/workspace/go/src/ttms/config/redis:/etc/redis #配置文件
+      - ttms_redis_data:/redis/data #数据库
+    entrypoint: [ "redis-server","/etc/redis/redis.conf" ]
+
+  app:
+    image: 1647193241/ttms_app:latest # 之后可以替换成自己的镜像
+    container_name: ttms_app
+    privileged: true # 权限
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - redis
+    entrypoint: [ "/app/wait-for.sh","redis_62:7963","postgres_zr:5432","--","/app/start.sh" ]

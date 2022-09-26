@@ -1,0 +1,109 @@
+digraph gocallvis {
+    label="ttms";
+    labeljust="l";
+    fontname="Arial";
+    fontsize="14";
+    rankdir="LR";
+    bgcolor="lightgray";
+    style="solid";
+    penwidth="0.5";
+    pad="0.0";
+    nodesep="0.35";
+
+    node [shape="ellipse" style="filled" fillcolor="honeydew" fontname="Verdana" penwidth="1.0" margin="0.05,0.0"];
+    edge [minlen="2"]
+
+    subgraph "cluster_focus" {
+        fontsize="18";
+bgcolor="#e6ecfa";
+label="main";
+labelloc="t";
+labeljust="c";
+        
+        "ttms.initSettings" [ penwidth="0.5" fillcolor="lightblue" label="initSettings" ]
+        "ttms.main" [ fillcolor="lightblue" label="main" penwidth="0.5" ]
+        "ttms.main$1" [ fillcolor="lightblue" label="main$1" style="dotted,filled" ]
+        "ttms.gracefulExit" [ fillcolor="lightblue" label="gracefulExit" penwidth="0.5" ]
+        
+        subgraph "cluster_go.uber.org/zap" {
+        fillcolor="lightyellow";
+label="zap";
+tooltip="package: go.uber.org/zap";
+penwidth="0.8";
+fontsize="16";
+style="filled";
+fontname="Tahoma bold";
+rank="sink";
+URL="/?f=go.uber.org/zap";
+        
+        
+        subgraph "cluster_*go.uber.org/zap.Logger" {
+        labelloc="b";
+style="rounded,filled";
+fillcolor="wheat2";
+label="(*Logger)";
+tooltip="type: *go.uber.org/zap.Logger";
+penwidth="0.5";
+fontsize="15";
+fontcolor="#222222";
+        
+        "(*go.uber.org/zap.Logger).Info" [ label="Info" penwidth="1.5" fillcolor="moccasin" ]
+        
+    }
+
+    }
+
+        subgraph "cluster_ttms/internal/routing/router" {
+        penwidth="0.8";
+style="filled";
+fillcolor="lightyellow";
+fontname="Tahoma bold";
+rank="sink";
+URL="/?f=ttms/internal/routing/router";
+fontsize="16";
+label="router";
+tooltip="package: ttms/internal/routing/router";
+        
+        "ttms/internal/routing/router.NewRouter" [ fillcolor="moccasin" label="NewRouter" penwidth="1.5" ]
+        
+    }
+
+        subgraph "cluster_ttms/internal/setting" {
+        penwidth="0.8";
+style="filled";
+fillcolor="lightyellow";
+fontname="Tahoma bold";
+label="setting";
+fontsize="16";
+rank="sink";
+URL="/?f=ttms/internal/setting";
+tooltip="package: ttms/internal/setting";
+        
+        "ttms/internal/setting.AllInit" [ fillcolor="moccasin" label="AllInit" penwidth="1.5" ]
+        
+        subgraph "cluster_ttms/internal/setting.auto" {
+        fontcolor="#222222";
+labelloc="b";
+style="rounded,filled";
+fillcolor="wheat2";
+label="(auto)";
+tooltip="type: ttms/internal/setting.auto";
+penwidth="0.5";
+fontsize="15";
+        
+        "(ttms/internal/setting.auto).Init" [ fillcolor="moccasin" label="Init" penwidth="1.5" ]
+        
+    }
+
+    }
+
+    }
+
+    "ttms.initSettings" -> "ttms/internal/setting.AllInit" [ color="saddlebrown" ]
+    "ttms.main" -> "ttms/internal/routing/router.NewRouter" [ color="saddlebrown" ]
+    "ttms.main" -> "(*go.uber.org/zap.Logger).Info" [ color="saddlebrown" ]
+    "ttms.main$1" -> "(*go.uber.org/zap.Logger).Info" [ color="saddlebrown" ]
+    "ttms.main" -> "ttms.main$1" [ arrowhead="normalnoneodot" ]
+    "ttms.main" -> "(ttms/internal/setting.auto).Init" [ color="saddlebrown" ]
+    "ttms.gracefulExit" -> "(*go.uber.org/zap.Logger).Info" [ color="saddlebrown" ]
+}
